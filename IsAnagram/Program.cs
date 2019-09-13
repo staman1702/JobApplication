@@ -21,18 +21,29 @@ namespace IsAnagram
             char[] allChars2 = string2.ToCharArray();
                         
             
-            if (allChars1.Count() == allChars2.Count() 
-                && !allChars1.Except(allChars2).Any())
+            if (IsAnagram(allChars1, allChars2) == true)
             {
                 Console.WriteLine("Is anagram");
             }
-            else
+            if (IsAnagram(allChars1, allChars2) == false)
             {
                 Console.WriteLine("Is not anagram");
             }
 
 
             Console.ReadKey();
+        }
+        
+        public static bool IsAnagram(char[] s1, char[] s2)
+        {
+            
+            if (s1.Count() == s2.Count() && 
+                !s1.Except(s2).Any())
+                return true;
+
+            else
+                return false;
+            
         }
     }
 }
