@@ -5,7 +5,7 @@ namespace MostOccurences
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.WriteLine("input the text:");
             string sentence = Console.ReadLine();

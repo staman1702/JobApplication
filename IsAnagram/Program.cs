@@ -6,7 +6,7 @@ namespace IsAnagram
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.WriteLine("Input string1:");
             string string1 = Console.ReadLine();
