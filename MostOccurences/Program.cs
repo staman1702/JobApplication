@@ -7,15 +7,16 @@ namespace MostOccurences
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Unesite ulazni niz:");
+            Console.WriteLine("input the text:");
             string sentence = Console.ReadLine();
 
-            sentence = sentence.Replace(" ", "");
+            sentence = sentence.ToLower().Replace(" ", "");
 
             char[] allChars = sentence.ToCharArray();
 
 
             ArrayList arrUniqueChars = new ArrayList();
+            int max = int.MinValue;
 
             for (int i=0; i<allChars.Length; i++)
             {
@@ -33,19 +34,28 @@ namespace MostOccurences
                 if(add)
                 {
                     arrUniqueChars.Add(allChars[i]);
-                }                
+                }
+                
             }
-            
-            for (int i = 0; i < 1; i++)
+
+            for (int i = 0; i < arrUniqueChars.Count; i++)
             {
-                Console.WriteLine("Character {0} - has {1} occurences.",
+                if (max < NumberOfOccurences(arrUniqueChars[i].ToString(), sentence))
+                {
+                    max = NumberOfOccurences(arrUniqueChars[i].ToString(), sentence);
+                }
+            }
+
+            for (int i = 0; i < arrUniqueChars.Count; i++)
+            {
+                if (max == NumberOfOccurences(arrUniqueChars[i].ToString(), sentence))
+                {
+                    Console.WriteLine("Character {0} has {1} occurences.",
                     arrUniqueChars[i],
                     NumberOfOccurences(arrUniqueChars[i].ToString(), sentence));
-            }
-            // varijabla "i" u for petlji se moze promjeniti da prikaže ne samo najčešće slovo, već može 
-            // prikazati dva, tri, četiri najčešća slova u nizu...
-            // ili jednostavno koristiti varijablu "aarUniqueChars" za ispis učestalosti svih slova u nizu
+                }
 
+            }
 
             Console.ReadKey();
         }
@@ -53,17 +63,17 @@ namespace MostOccurences
         static int NumberOfOccurences(string character, string sentence)
         {
             int numberOfOccurences = 0;
-            
+
             for (int i = 0; i < sentence.Length; i++)
             {
                 if (sentence.Substring(i, character.Length) == character)
                 {
                     numberOfOccurences++;
                 }
-
-            }                       
-
+            }   
+                       
             return numberOfOccurences;
+            
         }
     }
 }

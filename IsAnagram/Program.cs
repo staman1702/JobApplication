@@ -11,38 +11,38 @@ namespace IsAnagram
             Console.WriteLine("Input string1:");
             string string1 = Console.ReadLine();
             Console.WriteLine("Input string2:");
-            string string2 = Console.ReadLine();
-
-            string1 = string1.Replace(" ", "");
-            string2 = string2.Replace(" ", "");
-
-
-            char[] allChars1 = string1.ToCharArray();
-            char[] allChars2 = string2.ToCharArray();
+            string string2 = Console.ReadLine();            
                         
             
-            if (IsAnagram(allChars1, allChars2) == true)
+            if (IsAnagram(string1, string2) == true)
             {
                 Console.WriteLine("Is anagram");
             }
-            if (IsAnagram(allChars1, allChars2) == false)
+            if (IsAnagram(string1, string2) == false)
             {
                 Console.WriteLine("Is not anagram");
             }
 
-
             Console.ReadKey();
         }
         
-        public static bool IsAnagram(char[] s1, char[] s2)
+        public static bool IsAnagram(string s1, string s2)
         {
+            s1 = s1.Replace(" ", "");
+            s2 = s2.Replace(" ", "");
+
+            string sc1 = String.Concat(s1.OrderBy(x => x));
+            string sc2 = String.Concat(s2.OrderBy(x => x));
             
-            if (s1.Count() == s2.Count() && 
-                !s1.Except(s2).Any())
+            if (sc1.ToLower() == sc2.ToLower())
+            {
                 return true;
+            }               
 
             else
+            {
                 return false;
+            }
             
         }
     }
