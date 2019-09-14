@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace FindLongestFileNameInDir
 {
@@ -9,24 +12,25 @@ namespace FindLongestFileNameInDir
         {
             Console.WriteLine("input the path: ");
             string directoryPath = Console.ReadLine();
-            GetFiles(directoryPath);
+
+            Console.WriteLine(GetLongestFileName(directoryPath));
+                
+
             Console.ReadKey();
         }
 
-        public static void GetFiles(string path)
+        public static string GetLongestFileName(string path)
         {
-            string[] arrFiles = Directory.GetFiles(path);
+            string[] arrFiles = Directory.GetFiles(path, "*", SearchOption.AllDirectories);
+            var list = new List<string>();
 
             foreach (var arrFile in arrFiles)
             {
-                Console.WriteLine(Path.GetFileName(arrFile));
+                list.Add(Path.GetFileName(arrFile));
             }
 
-            string[] sDirs = Directory.GetDirectories(path);
-            foreach (string sDir in sDirs)
-            {
-                GetFiles(sDir);
-            }
+            return list.OrderByDescending(s => s.Length)
+                .FirstOrDefault();
         }
     }
 }
