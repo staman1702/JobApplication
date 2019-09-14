@@ -9,12 +9,8 @@ namespace MostOccurences
         {
             Console.WriteLine("input the text:");
             string sentence = Console.ReadLine();
-
             sentence = sentence.ToLower().Replace(" ", "");
-
             char[] allChars = sentence.ToCharArray();
-
-
             ArrayList arrUniqueChars = new ArrayList();
             int max = int.MinValue;
 
@@ -35,7 +31,6 @@ namespace MostOccurences
                 {
                     arrUniqueChars.Add(allChars[i]);
                 }
-                
             }
 
             for (int i = 0; i < arrUniqueChars.Count; i++)
@@ -54,26 +49,21 @@ namespace MostOccurences
                     arrUniqueChars[i],
                     NumberOfOccurences(arrUniqueChars[i].ToString(), sentence));
                 }
-
             }
-
             Console.ReadKey();
         }
 
         static int NumberOfOccurences(string character, string sentence)
         {
             int numberOfOccurences = 0;
-
             for (int i = 0; i < sentence.Length; i++)
             {
                 if (sentence.Substring(i, character.Length) == character)
                 {
                     numberOfOccurences++;
                 }
-            }   
-                       
+            }                         
             return numberOfOccurences;
-            
         }
     }
 }

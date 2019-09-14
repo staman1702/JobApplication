@@ -8,11 +8,11 @@ namespace Permutations
         {
             Console.WriteLine("input text:");
             string input = Console.ReadLine();
-            Permuatations("", input);
+            Permutations("", input);
             Console.ReadKey();
         }
 
-        static void Permuatations(string prefix, string input)
+        static void Permutations(string prefix, string input)
         {
             int n = input.Length;
             if (n == 0) { Console.WriteLine(prefix); }
@@ -20,7 +20,7 @@ namespace Permutations
             {
                 for (int i = 0; i < n; i++)
                 {
-                    Permuatations(prefix + input[i], 
+                    Permutations(prefix + input[i], 
                         input.Substring(0, i) + input.Substring(i + 1, n - (i + 1)));
                 }
             }

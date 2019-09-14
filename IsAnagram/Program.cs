@@ -11,8 +11,7 @@ namespace IsAnagram
             Console.WriteLine("Input string1:");
             string string1 = Console.ReadLine();
             Console.WriteLine("Input string2:");
-            string string2 = Console.ReadLine();            
-                        
+            string string2 = Console.ReadLine(); 
             
             if (IsAnagram(string1, string2) == true)
             {
@@ -22,7 +21,6 @@ namespace IsAnagram
             {
                 Console.WriteLine("Is not anagram");
             }
-
             Console.ReadKey();
         }
         
@@ -37,13 +35,11 @@ namespace IsAnagram
             if (sc1.ToLower() == sc2.ToLower())
             {
                 return true;
-            }               
-
+            } 
             else
             {
                 return false;
             }
-            
         }
     }
 }
